@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home| BeeSound</title>
+
+    <!-- Tailwind Css -->
+    <link rel="stylesheet" href="./output.css" />
+
+    <!-- inter google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- alpine js -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!-- scritpt js -->
+    <script src="./script.js"></script>
+
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="font-inter">
+    <main class="flex flex-col">
+      <!-- Main Page -->
+      <div>
+        <!-- header -->
+        <header
+          class="flex items-center justify-between px-[80px] pb-[69px] pt-[53px]"
+        >
+          <!-- Logo -->
+          <div>
+            <i class="fa-solid fa-music"></i>
+            <a href="#" class="text-2xl font-semibold">BeeSound</a>
+          </div>
+
+          <!-- menu list-->
+          <ul class="flex items-center gap-20">
+            <li>Our Colection</li>
+            <li>New Arrivals</li>
+            <li>For Gamers</li>
+          </ul>
+
+          <!-- button -->
+          <div class="flex items-center gap-9">
+            <i class="text-xl fa-solid fa-magnifying-glass"></i>
+            <i class="text-xl fa-solid fa-cart-shopping"></i>
+            <a
+              href=""
+              class="ml-3 rounded-xl border-2 border-brand-black px-8 py-2.5 text-brand-black"
+              >Sign in / Sign Up</a
+            >
+          </div>
+        </header>
+
+        <!-- hero -->
+        <div
+          class="mx-20 rounded-t-[5px] rounded-bl-[5px] rounded-br-[150px] bg-brand-purple text-white"
+        >
+          <div class="flex items-center justify-between py-16 pl-20">
+            <!-- title -->
+            <div class="flex flex-col w-1/2 gap-5">
+              <h1 class="text-5xl font-medium">
+                Discover The Brand <br />
+                New Headset In Market
+              </h1>
+              <p>
+                BeeSound is the one of the world’s largest online shops that
+                providing over <br />
+                1500 headphones for its costumers from over 80 countries
+              </p>
+              <a
+                href="#"
+                class="w-max rounded-lg border-2 border-brand-navy bg-white px-8 py-2.5 text-brand-navy"
+                >Buy Now</a
+              >
+            </div>
+            <!-- image -->
+            <div
+              class="flex items-center justify-center w-1/2"
+              x-data="dataProducts(1)"
+            >
+              <img
+                src="https://placeholder.com/300x300"
+                alt="image-product"
+                class="max-w-72"
+                x-show="error.isError"
+              />
+              <img
+                :src="products[0].images[0]"
+                alt="image-product"
+                class="max-w-72"
+                x-bind:class="{ 'hidden': error.isError }"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- our best selling -->
+        <div class="px-20 py-16">
+          <!-- title -->
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-2xl font-medium">Our Best Selling</h3>
+            <a href="./products.html" class=""
+              >See More <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </div>
+
+          <!-- container card -->
+          <div class="grid grid-cols-4 gap-5" x-data="dataProducts">
+            <!-- error -->
+            <div class="col-span-4 bg-red-100" x-show="error.isError">
+              <h2 class="font-semibold text-center text-red-800">
+                Terjadi kesalahan saat mengambil data
+              </h2>
+            </div>
+
+            <!-- card item -->
+            <template x-for="product in products">
+              <div class="p-3 border-2 cols-span-1 h-max">
+                <!-- image -->
+                <div class="mb-6">
+                  <img
+                    :src="product.images[0]"
+                    alt="image-product"
+                    class="h-full rounded"
+                  />
+                </div>
+                <!-- body -->
+                <div class="flex flex-col gap-3">
+                  <h5 class="text-2xl font-medium" x-text="product.title"></h5>
+                  <p class="truncate" x-text="product.description"></p>
+                  <!-- price -->
+                  <div class="flex items-center justify-between">
+                    <p class="font-semibold">Price</p>
+                    <span class="font-semibold text-green-700"
+                      >$ <span x-text="product.price"></span
+                    ></span>
+                  </div>
+                  <!-- button -->
+                  <a
+                    href=""
+                    class="w-max rounded-lg bg-brand-purple px-8 py-2.5 text-white"
+                    >Detail Product</a
+                  >
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+
+      <!-- footer -->
+      <footer class="bg-brand-sky">
+        <div class="grid grid-cols-4 gap-20 px-24 mx-auto py-11">
+          <!-- cols 1 -->
+          <div class="flex flex-col col-span-1 gap-8">
+            <h3 class="text-2xl">BeeSound</h3>
+            <p>
+              BeeSound is the one of the world’s largest online shops that
+              providing over 1500 headphones for its costumers from over 80
+              countries
+            </p>
+            <!-- sosmed -->
+            <div class="flex gap-6 text-3xl">
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-facebook"></i></a>
+              <a href="#"><i class="fa-brands fa-telegram"></i></a>
+              <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+          </div>
+          <!-- cols 2 -->
+          <div class="flex flex-col col-span-1 gap-8">
+            <h3 class="text-2xl">Site Map</h3>
+            <ul>
+              <li>About Us</li>
+              <li>Contact Us</li>
+              <li>FAQ’s</li>
+              <li>Customers Services</li>
+            </ul>
+          </div>
+          <!-- cols 3 -->
+          <div class="flex flex-col col-span-1 gap-8">
+            <h3 class="text-2xl">Products</h3>
+            <ul>
+              <li>Headphones</li>
+              <li>Speakers</li>
+            </ul>
+          </div>
+          <!-- cols 4 -->
+          <div class="flex flex-col col-span-1 gap-8">
+            <h3 class="text-2xl">Subscription</h3>
+            <form action="#" class="flex flex-col gap-3">
+              <input
+                type="text"
+                placeholder="Enter Your Email"
+                class="w-full rounded-lg bg-brand-gray-100 px-8 py-2.5 text-brand-navy placeholder:text-brand-gray-500"
+              />
+              <button
+                class="w-full rounded-lg bg-brand-navy px-8 py-2.5 text-white"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
